@@ -1,0 +1,15 @@
+FROM php:apache
+
+RUN docker-php-ext-install pdo pdo_mysql
+
+WORKDIR /var/www/html
+
+COPY ./public/ /var/www/html/
+
+COPY ./include/ /var/www/include/
+COPY ./config/ /var/www/config/
+COPY ./require/ /var/www/require/
+COPY ./app/ /var/www/app/
+COPY ./images /var/www/images
+
+RUN chown -R www-data:www-data /var/www/ && chmod -R 755 /var/www/

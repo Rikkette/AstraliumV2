@@ -95,7 +95,7 @@ $isLoggedIn = isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true;
 <!-------------------------- Nav bar bootstrap : barre de recherche ------------------------------>
 <!-------------------------- ici je traduit la barre de recherche -------------------->
 <nav class="navbar navbar-light bg-light">
-  <form class="form-inline">
+  <form class="form-inline" method="post">
     <input class="form-control mr-sm-2" type="search" placeholder="Recherche" aria-label="Search">
     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Recherche</button>
   </form>
