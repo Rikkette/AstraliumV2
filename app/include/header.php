@@ -1,28 +1,21 @@
-<!----- Header qui regroupe la barre de recherche, la navbarre de naviagation, panier, traduction, connextion user/admin, newsletter,contacte marion ------>
-
 <?php
-//-----------------------------je lance la session ---------------------------
 
 if (session_status() === PHP_SESSION_NONE) {
   session_start();
-}
+  }
+  var_dump($users_email);
 
-// ------------------J'inclue le gestionnaire de langue------------------------------------
-//include_once 'Trad_FR-En/gestionnaire_langue.php';
-
-// -----------------------Configuration de la base de données-------------------------
-
-$host = '127.0.0.1';
-$dbname = 'astraliumv2';
+$host = 'db';
+$dbname = 'AstraliumV2';
 $username = 'root';
-$password = '';
+$password = 'opif';
 
 //$conn = new mysqli($servername ,$username ,$password ,$dbname);
 
 //if($conn->connect_error)(
 //    die("erreur de connexion à la base de donnée : ". $conn->connect_error)
 //)else {
- //   echo "connexion ok !"
+//   echo "connexion ok !"
 //}
 
 try {
@@ -48,7 +41,7 @@ if (isset($_SESSION['users_id'])) {
     $username = $user['users_id'];
   }
 }
-$Admin = isset($_SESSION['type_libelle']) && in_array($_SESSION['type_libelle'], ['Admin']);
+$Admin = isset($_SESSION['type_role']) && in_array($_SESSION['type_role'], ['Admin']);
 $isLoggedIn = isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true;
 
 // var_dump($_SESSION['type_libelle']); //(renvoie si je suis co comme admin ou non)

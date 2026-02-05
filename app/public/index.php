@@ -1,27 +1,14 @@
-<!----------- Page d'acceuil du site presentatyion des dernieres nouveautés mise dans le shop, -------->
+<!----------- Page d'acceuil du site présentation des dernieres nouveautés mise dans le shop, -------->
 
-<?php
-include "header.php";
-
+<?php include "../include/header.php"
 ?>
 
-<!DOCTYPE html>
-<!--ici je lance une session pour choisir la langue ou renvoyer l'info-->
-
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <title><?php echo $lang['page_title']; ?>Accueil</title>
-</head>
 <!--------- banniere d'agrement pour illustré la page d'acceuil ---------->
 
 <body>
     <div class="banniere-container">
         <div>
-            <img src="Style/photo_illu/banniere_index.png" class="banniere_index">
+            <img src="/app/image/banniere_index.png" class="banniere_index">
         </div>
     </div>
 
@@ -43,7 +30,6 @@ include "header.php";
     <!----------------------- partie bootstrap pour afficher les produit sur la page d'accueil --------------------------->
     <section class="py-5">
         <div class="container px-4 px-lg-5 mt-5">
-            <!--ici je modifie pour que la langue puisse etre traduite avec le "php echo $lang ['']"--->
             <h2 class="mb-4">Nos dernières nouveautés</h2>
             <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
                 <?php foreach ($derniers_produits as $produit): ?>
@@ -66,7 +52,6 @@ include "header.php";
                             <!-- Product actions -->
                             <div class="card-footer m-4 pt-0 border-top-0 bg-transparent">
                                 <div class="text-center">
-                                    <!--ici traduction des card de vente du site---->
                                     <a class="btn btn-outline-dark mt-auto" href="produit-details.php?id=<?= htmlentities($produit['produits_id']) ?>">En savoir plus</a>
                                 </div>
                             </div>
@@ -76,16 +61,12 @@ include "header.php";
             </div>
             <!--------- cette partie et relier a un bouton qui renvoie vers la boutique ---------->
             <div class="text-center mt-4">
-                <!--ici traduction du lien vers la boutique--->
                 <a class="btn btn-primary" href="produits.php">Voir tous nos produits</a>
             </div>
 
         </div>
     </section>
 
-    <?php
-    include "footer.php";
+<?php
+    include "../include/footer.php";
     ?>
-
-</html>
-</body>

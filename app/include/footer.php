@@ -50,3 +50,5 @@
     <div id="rectangle" class="rectangle"></div>
     
 </footer>
+</body>
+</html>

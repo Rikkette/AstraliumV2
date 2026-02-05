@@ -17,14 +17,14 @@ services:
       - ./app/config:/var/www/config
       - ./app/require:/var/www/require
       - ./app/app:/var/www/app
-      - ./config/apache.conf:/etc/apache2/sites-available/000-default.conf  # Ajout de la config Apache
+        # Ajout de la config Apache
     depends_on: # On précise que le container app dépend du container db
       - db
   db: # On crée un container db
     image: mysql:5.7
     environment:
-      MYSQL_ALLOW_EMPTY_PASSWORD:
       MYSQL_DATABASE: AstraliumV2
+      MYSQL_ROOT_PASSWORD: opif
     volumes: # On monte le volume db_data pour que les données soient persistantes
       - db_data:/var/lib/mysql
       - ./scripts:/docker-entrypoint-initdb.d # On monte le dossier scripts pour que les scripts sql soient exécutés
@@ -35,7 +35,7 @@ services:
       - "8080:80"
     environment:
       PMA_HOST: db
-      MYSQL_ROOT_PASSWORD: ""
+      MYSQL_ROOT_PASSWORD: opif
 
 volumes:
   db_data:
