@@ -5,7 +5,6 @@
 
 <!--------- banniere d'agrement pour illustré la page d'acceuil ---------->
 
-<body>
     <div class="banniere-container">
         <div>
             <img src="/app/image/banniere_index.png" class="banniere_index">
