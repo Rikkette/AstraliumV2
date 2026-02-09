@@ -1,9 +1,9 @@
 <?php
 
-if (session_status() === PHP_SESSION_NONE) {
+if (session_status() !== PHP_SESSION_NONE) {
     session_start();
 }
-var_dump($users_email);
+//var_dump($_SESSION['users_email']);
 
 $db_host = 'db';
 $db_name = 'AstraliumV2';
@@ -69,16 +69,6 @@ $isLoggedIn = isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true;
     <!-------------------------- favicon Astralium --------------------------------------------------->
     <link rel="icon" type="image/png" sizes="32x32" href="/Style/logo/favicon_lune.png">
 </head>
-
-<!-------------------------- Drapeau langue EN & FR ------------------------->
-<div class="langue-select">
-    <div class="banniereHeader">
-        <div class="drapeau">
-            <a href="#"><img src="Style/logo/drapeau_en.png" width="40" height="30" alt="English" class="drapeau-img" style="cursor: pointer"></a>
-            <a href="#"><img src="Style/logo/drapeau_fr.png" width="40" height="30" alt="Français" class="drapeau-img" style="cursor: pointer"></a>
-        </div>
-    </div>
-</div>
 
 <!-------------------------- caddie logo ------------------------->
 <div class="caddie">

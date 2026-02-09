@@ -1,6 +1,6 @@
 <!----------- Page d'acceuil du site présentation des dernieres nouveautés mise dans le shop, -------->
 
-<?php include "../include/header.php"
+<?php include "../include/header.php";
 ?>
 
 <!--------- banniere d'agrement pour illustré la page d'acceuil ---------->
