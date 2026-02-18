@@ -1,5 +1,5 @@
 <?php
-// ici j'appelle les models clients & type 
+//on gere ici uniquement les utilisateur du site
 
 
 

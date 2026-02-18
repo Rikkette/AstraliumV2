@@ -20,7 +20,7 @@ $db_password = 'opif';
 
 try {
     // ----------------------Connexion à la base de données------------------------------
-    $pdo = new PDO("mysql:host=$db_host;dbname=$db_name;charset=utf8mb4",$db_user, $db_password);
+    $pdo = new PDO("mysql:host=$db_host;dbname=$db_name;charset=utf8mb4", $db_user, $db_password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
     die("Erreur de connexion : " . $e->getMessage());
@@ -50,29 +50,29 @@ $isLoggedIn = isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true;
 <!---------------------------------------html--------------------------------------------->
 
 <!DOCTYPE html>
-<!--ici je lance une session pour choisir la langue ou renvoyer l'info-->
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-------------------------- link bootstrap ---------------------------------------------->
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-------------------------------- CSS -------------------------------------------------------------->
     <link rel="stylesheet" href="../include/style/style.css">
+
     <!--------------------- bibliothèque Javascript "Fancybox" ------------------------------------->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
 
     <!-------------------------- favicon Astralium --------------------------------------------------->
-    <link rel="icon" type="image/png" sizes="32x32" href="style/logo/favicon_lune.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/app/public/image/favicon_lune.png">
 </head>
 
-<!-------------------------- caddie logo ------------------------->
-<div class="caddie">
-    <img src="Style/logo/sac_logo.png" width="150" height="80" alt="caddie logo" class="caddie-img" style="cursor: pointer;">
+<!--------------------------logo panier ------------------------->
+<div class="logo_panier">
+    <img src="/app/image/sac_logo.png" width="150" height="80" alt="logo panier" class="logo_panier_img" style="cursor: pointer;">
 </div>
 <!-------------------------- Nav bar bootstrap : barre de recherche ------------------------------>
 <nav class="navbar navbar-light bg-light">
@@ -81,7 +81,7 @@ $isLoggedIn = isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true;
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Recherche</button>
     </form>
 </nav>
-<img src="Style/logo/banniere.header.png" class="banniere">
+<img src="/public/image/banniere_index.png">
 </div>
 
 <!------------------------------ Nav Bar bootstrap :  ---------------------------->
