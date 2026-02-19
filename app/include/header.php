@@ -18,8 +18,8 @@ $db_password = 'opif';
 //   echo "connexion ok !"
 //}
 
+// ----------------------Connexion à la base de données------------------------------
 try {
-    // ----------------------Connexion à la base de données------------------------------
     $pdo = new PDO("mysql:host=$db_host;dbname=$db_name;charset=utf8mb4", $db_user, $db_password);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
@@ -45,8 +45,8 @@ $Admin = isset($_SESSION['type_role']) && in_array($_SESSION['type_role'], ['Adm
 $isLoggedIn = isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true;
 
 // var_dump($_SESSION['type_libelle']); //(renvoie si je suis co comme admin ou non)
-
 ?>
+
 <!---------------------------------------html--------------------------------------------->
 
 <!DOCTYPE html>
@@ -58,21 +58,20 @@ $isLoggedIn = isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true;
     <!-------------------------- link bootstrap ---------------------------------------------->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <!-------------------------------- CSS -------------------------------------------------------------->
-    <link rel="stylesheet" href="../include/style/style.css">
 
-    <!--------------------- bibliothèque Javascript "Fancybox" ------------------------------------->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+    <!-------------------------------- CSS -------------------------------------------------------------->
+    <link rel="stylesheet" href="../public/style/style.css">
+
+    <!--------------------- bibliothèque Javascript "GLightbox" ------------------------------------->
+    <link rel="stylesheet" href="/public/css/glightbox.min.css">
 
     <!-------------------------- favicon Astralium --------------------------------------------------->
-    <link rel="icon" type="image/png" sizes="32x32" href="/app/public/image/favicon_lune.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../public/image/favicon_lune.png" alt="logo_lune_page">
 </head>
 
 <!--------------------------logo panier ------------------------->
 <div class="logo_panier">
-    <img src="/app/image/sac_logo.png" width="150" height="80" alt="logo panier" class="logo_panier_img" style="cursor: pointer;">
+    <img src="image/sac_logo.png" width="150" height="80" alt="logo_panier" class="logo_panier_img" style="cursor: pointer;">
 </div>
 <!-------------------------- Nav bar bootstrap : barre de recherche ------------------------------>
 <nav class="navbar navbar-light bg-light">
@@ -81,7 +80,13 @@ $isLoggedIn = isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true;
         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Recherche</button>
     </form>
 </nav>
-<img src="/public/image/banniere_index.png">
+
+<!--------- banniere d'agrement pour illustré la page d'acceuil ---------->
+
+<div class="banniere-container">
+    <div>
+        <img src="image/banniere_index.png" class="banniere_index" alt="banniere_index">
+    </div>
 </div>
 
 <!------------------------------ Nav Bar bootstrap :  ---------------------------->

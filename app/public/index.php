@@ -3,14 +3,6 @@
 <?php include "../include/header.php";
 ?>
 
-<!--------- banniere d'agrement pour illustré la page d'acceuil ---------->
-
-    <div class="banniere-container">
-        <div>
-            <img src="/app/image/banniere_index.png" class="banniere_index">
-        </div>
-    </div>
-
     <!-----------Partie PHP Select * from pour afficher les dernier produits mis sur le site -------->
     <?php
     $sql = "SELECT p.* , media_libelle 
