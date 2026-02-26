@@ -3,6 +3,7 @@
 if (session_status() !== PHP_SESSION_NONE) {
     session_start();
 }
+
 //var_dump($_SESSION['users_email']);
 
 $db_host = 'db';
@@ -55,6 +56,9 @@ $isLoggedIn = isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true;
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-------------------------- favicon Astralium --------------------------------------------------->
+    <link rel="icon" type="image/png" sizes="32x32" href="image/favicon_lune.png" alt="logo_lune_page">
+
     <!-------------------------- link bootstrap ---------------------------------------------->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -63,16 +67,22 @@ $isLoggedIn = isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true;
     <link rel="stylesheet" href="../public/style/style.css">
 
     <!--------------------- bibliothèque Javascript "GLightbox" ------------------------------------->
-    <link rel="stylesheet" href="/public/css/glightbox.min.css">
+    <link rel="stylesheet" href="style/glightbox.min.css">
+    <script src="scripts/glightbox.min.js"></script>
+    <script>
+        const lightbox = GLightbox();
+    </script>
 
-    <!-------------------------- favicon Astralium --------------------------------------------------->
-    <link rel="icon" type="image/png" sizes="32x32" href="../public/image/favicon_lune.png" alt="logo_lune_page">
 </head>
 
 <!--------------------------logo panier ------------------------->
 <div class="logo_panier">
     <img src="image/sac_logo.png" width="150" height="80" alt="logo_panier" class="logo_panier_img" style="cursor: pointer;">
 </div>
+<li class="nav-item">
+    <a class="nav-link" href="panier.php">panier</a>
+</li>
+
 <!-------------------------- Nav bar bootstrap : barre de recherche ------------------------------>
 <nav class="navbar navbar-light bg-light">
     <form class="form-inline" method="post">

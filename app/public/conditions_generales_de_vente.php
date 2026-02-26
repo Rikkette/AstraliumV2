@@ -1,7 +1,7 @@
 <!----------- Page qui envoie vers les conditions générale de vente dans le footer --------> 
 
 <?php
-include "header.php";
+include "../include/header.php";
 ?>
 
 <h1 class="cgv">
@@ -43,5 +43,5 @@ include "header.php";
 </div>
 
 <?php
-include "footer.php";
+include "../include/footer.php";
 ?>

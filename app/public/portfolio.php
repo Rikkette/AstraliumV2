@@ -19,9 +19,57 @@
     </script>
 
     <a href="image/Calendrier_01_Janvier.png" class="glightbox">
-        <img src="image/Calendrier_01_Janvier.png" alt="calendrier_janvier" width="850" height="1090">
+        <img src="image/Calendrier_01_Janvier.png" alt="calendrier_janvier" width="350" height="500">
+    </a>
+
+    <a href="image/Calendrier_02_Février.png" class="glightbox">
+        <img src="image/Calendrier_02_Février.png" alt="calendrier_février" width="350" height="500">
+    </a>
+
+    <a href="image/Calendrier_03_Mars.png" class="glightbox">
+        <img src="image/Calendrier_03_Mars.png" alt="calendrier_mars" width="350" height="500">
+    </a>
+
+    <a href="image/Calendrier_04_Avril.png" class="glightbox">
+        <img src="image/Calendrier_04_Avril.png" alt="calendrier_avril" width="350" height="500">
+    </a>
+
+    <a href="image/Calendrier_05_Mai.png" class="glightbox">
+        <img src="image/Calendrier_05_Mai.png" alt="calendrier_mai" width="350" height="500">
+    </a>
+
+    <a href="image/Calendrier_06_Juin.png" class="glightbox">
+        <img src="image/Calendrier_06_Juin.png" alt="calendrier_juin" width="350" height="500">
+    </a>
+
+    <a href="image/Calendrier_07_Juillet.png" class="glightbox">
+        <img src="image/Calendrier_07_Juillet.png" alt="calendrier_juillet" width="350" height="500">
+    </a>
+
+    <a href="image/Calendrier_08_Aout.png" class="glightbox">
+        <img src="image/Calendrier_08_Aout.png" alt="calendrier_aout" width="350" height="500">
+    </a>
+
+    <a href="image/Calendrier_09_Septembre.png" class="glightbox">
+        <img src="image/Calendrier_09_Septembre.png" alt="calendrier_septembre" width="350" height="500">
+    </a>
+
+    <a href="image/Calendrier_10_Octobre.png" class="glightbox">
+        <img src="image/Calendrier_10_Octobre.png" alt="calendrier_octobre" width="350" height="500">
+    </a>
+
+    <a href="image/Calendrier_11_Novembre.png" class="glightbox">
+        <img src="image/Calendrier_11_Novembre.png" alt="calendrier_novembre" width="350" height="500">
+    </a>
+
+    <a href="image/Calendrier_12_Decembre.png" class="glightbox">
+        <img src="image/Calendrier_12_Decembre.png" alt="calendrier_decembre" width="350" height="500">
     </a>
 
 </body>
 
 </html>
+
+<?php
+include "../include/footer.php";
+?>
