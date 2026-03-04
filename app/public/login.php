@@ -1,75 +1,75 @@
-<!----- espace de connexion au site internet pour l'admin et ---->
+<!----- espace de connexion au site internet pour l'admin ---->
 
 <?php
 include '../include/header.php';
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
-?>
 
-<?php
-
-// Véfifier si l'utilisateur est connecté
-
+// Vérifier si l'utilisateur est déjà connecté
 if (isset($_SESSION['users_id'])) {
-    // si oui il est alors conencter si non la personne est renvoyée vers l'index
     header('Location: index.php');
     exit();
 }
 
+$error_message = null;
+
 // Traitement de la soumission du formulaire de connexion
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Réception des données du formulaire en méthodes POST
+
     $login = $_POST['users_email'];
     $password = $_POST['users_password'];
 
-    var_dump($login, $password);
-
-    $stmt = $pdo->prepare("SELECT * FROM users WHERE users_email = :login");;
+    // Recherche de l'utilisateur par email
+    $stmt = $pdo->prepare("SELECT * FROM users WHERE users_email = :login");
     $stmt->bindValue(':login', $login);
     $stmt->execute();
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
-    // var_dump($user);
 
-    // Récupère le type d'utilisateur pour renseigner la variable de session type_ID
-    $stmt = $pdo->prepare("SELECT * FROM type_role WHERE type_role_id = :type_role_id");
-    $stmt->bindValue(':type_role_id', $user['type_role_id']);
-    $stmt->execute();
-    $type = $stmt->fetch(PDO::FETCH_ASSOC);
+    // Vérification que l'utilisateur existe ET que le mot de passe est correct
+    if ($user && password_verify($password, $user['users_password'])) {
 
-    // Stocker les informations de type dans la session
-    $_SESSION['type_libelle'] = $type['type_libelle'];
-    echo "<br>Type d'utilisateur : " . $_SESSION['type_libelle'];
-    $_SESSION['logged_in'] = true;
-    echo '<meta http-equiv="refresh" content="0;url=index.php">';
-    exit();
-} else {
-    //Identifiants incorrects, affichage d'un message d'erreur
-    $error_message = "Email ou mot de passe incorrect";
+        // Récupère le rôle de l'utilisateur
+        $stmt = $pdo->prepare("SELECT * FROM type_role WHERE type_role_id = :type_role_id");
+        $stmt->bindValue(':type_role_id', $user['type_role_id']);
+        $stmt->execute();
+        $type = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        // Stocker les informations en session
+        $_SESSION['users_id'] = $user['users_id'];
+        $_SESSION['logged_in'] = true;
+        $_SESSION['type_libelle'] = $type['type_libelle'];
+
+        header('Location: index.php');
+        exit();
+
+    } else {
+        // Email ou mot de passe incorrect
+        $error_message = "Email ou mot de passe incorrect";
+    }
 }
 ?>
+
 <!--------------------------------------------------------------->
 
 <div class="container-connexion">
     <div class="login-box">
         <h2 class="title-connexion">Connexion</h2>
 
-        <?php if (isset($error_message)) : ?>
-
+        <?php if ($error_message) : ?>
             <div class="alert alert-danger" role="alert">
                 <?= $error_message ?>
             </div>
-
         <?php endif; ?>
 
         <form method="POST" class="form-connexion">
 
             <div class="textbox">
-                <input type="text" name="users_email" placeholder="Email" id="email"  class="input-connexion" autocomplete="on" required>
+                <input type="text" name="users_email" placeholder="Email" id="email" class="input-connexion" autocomplete="on" required>
                 <span id="email-error" class="error-message"></span>
             </div>
 
             <div class="textbox">
-                <input type="password" name="users_password" placeholder="Mot de passe"id="password" class="input-connexion" required>
+                <input type="password" name="users_password" placeholder="Mot de passe" id="users_password" class="input-connexion" required>
                 <span id="password-error" class="error-message"></span>
             </div>
 
@@ -77,9 +77,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         </form>
     </div>
-
 </div>
 
-<?php
-include "../include/footer.php";
-?>
+<?php include "../include/footer.php"; ?>

@@ -42,7 +42,7 @@
     <div><h5 class="newsletter">Découvre ma Newsletter</h5></div>
 
     <div>
-        <img src="/Style/logo/logo.png" alt="logo Astralium" class="logoAstra" width="100" height="100">
+        <img src="image/logo_astralium.jpg" alt="logo Astralium" class="logoAstra" width="100" height="100">
     </div>
 
     <button class="button" type="button" data-bs-toggle="modal" data-bs-target="#newsletterModal">Je m'abonne!</button>

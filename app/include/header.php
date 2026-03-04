@@ -42,7 +42,7 @@ if (isset($_SESSION['users_id'])) {
         $username = $user['users_id'];
     }
 }
-$Admin = isset($_SESSION['type_role']) && in_array($_SESSION['type_role'], ['Admin']);
+$Admin = isset($_SESSION['type_libelle']) && in_array($_SESSION['type_libelle'], ['Admin']);
 $isLoggedIn = isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true;
 
 // var_dump($_SESSION['type_libelle']); //(renvoie si je suis co comme admin ou non)
@@ -80,7 +80,7 @@ $isLoggedIn = isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true;
     <img src="image/sac_logo.png" width="150" height="80" alt="logo_panier" class="logo_panier_img" style="cursor: pointer;">
 </div>
 <li class="nav-item">
-    <a class="nav-link" href="panier.php">panier</a>
+    <a class="nav-link" href="panier.php"></a>
 </li>
 
 <!-------------------------- Nav bar bootstrap : barre de recherche ------------------------------>
@@ -141,13 +141,20 @@ $isLoggedIn = isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true;
 
                 <!----------------- Bouton Connexion/Déconnexion ----->
 
-                <?php if ($isLoggedIn && $Admin): ?>
+                <?php if ($isLoggedIn): ?> 
+                    <!--sauf if Admin--> 
                     <li class="nav_item">
                         <a href="produit-select.php" class="nav-link">ajouter produit</a>
+                    <!-- ici je referme le if admin -->
                     </li>
                     <a href="logout.php" class="position"> Déconnexion</a>
                 <?php else: ?>
                     <a href="login.php" class="position"> Connexion </a>
+
+                    <?php
+                    var_dump($isLoggedIn);
+                    ?>
+                    
                 <?php endif; ?>
                 </li>
 
