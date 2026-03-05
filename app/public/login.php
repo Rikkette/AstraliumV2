@@ -1,15 +1,7 @@
-<!----- espace de connexion au site internet pour l'admin ---->
-
 <?php
 include '../include/header.php';
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
-
-// Vérifier si l'utilisateur est déjà connecté
-if (isset($_SESSION['users_id'])) {
-    header('Location: index.php');
-    exit();
-}
 
 $error_message = null;
 
@@ -26,10 +18,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
     // Vérification que l'utilisateur existe ET que le mot de passe est correct
-    if ($user && password_verify($password, $user['users_password'])) {
+    if ($user && $password === $user['users_password']) {
 
         // Récupère le rôle de l'utilisateur
         $stmt = $pdo->prepare("SELECT * FROM type_role WHERE type_role_id = :type_role_id");
+
         $stmt->bindValue(':type_role_id', $user['type_role_id']);
         $stmt->execute();
         $type = $stmt->fetch(PDO::FETCH_ASSOC);

@@ -28,7 +28,7 @@ try {
 }
 
 // -------------Vérifiez si l'utilisateur est connecté---------
-$db_name = null;
+
 if (isset($_SESSION['users_id'])) {
     $userId = $_SESSION['users_id'];
 
@@ -39,7 +39,7 @@ if (isset($_SESSION['users_id'])) {
     $user = $stmtUser->fetch(PDO::FETCH_ASSOC);
 
     if ($user) {
-        $username = $user['users_id'];
+        $username = $user['users_email'];
     }
 }
 $Admin = isset($_SESSION['type_libelle']) && in_array($_SESSION['type_libelle'], ['Admin']);
@@ -150,11 +150,6 @@ $isLoggedIn = isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true;
                     <a href="logout.php" class="position"> Déconnexion</a>
                 <?php else: ?>
                     <a href="login.php" class="position"> Connexion </a>
-
-                    <?php
-                    var_dump($isLoggedIn);
-                    ?>
-                    
                 <?php endif; ?>
                 </li>
 
