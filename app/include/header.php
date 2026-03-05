@@ -110,27 +110,27 @@ $isLoggedIn = isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true;
             <ul class="navbar-nav mx-auto">
                 <!--------------- Accueil ---------------->
                 <li class="nav-item">
-                    <a class="nav-link" href="index.php">Accueil</a>
+                    <a class="nav-link" href="index.php"> Accueil </a>
                 </li>
                 <!--------------- Boutique --------------->
                 <li class="nav-item">
-                    <a class="nav-link" href="produits.php">Boutique</a>
+                    <a class="nav-link" href="produits.php"> Boutique </a>
                 </li>
                 <!--------------- Portfolio -------------->
                 <li class="nav-item">
-                    <a class="nav-link" href="portfolio.php">Portfolio</a>
+                    <a class="nav-link" href="portfolio.php"> Portfolio </a>
                 </li>
                 <!---------------- A propos ---------------->
                 <li class="nav-item">
-                    <a class="nav-link" href="apropos.php">Qui suis-je ?</a>
+                    <a class="nav-link" href="apropos.php"> Qui suis-je ? </a>
                 </li>
                 <!------------------- blog ----------------->
                 <li class="nav-item">
-                    <a class="nav-link" href="blog.php">Blog</a>
+                    <a class="nav-link" href="blog.php"> Blog </a>
                 </li>
                 <!----------------- newsletter --------------->
                 <li class="nav-item">
-                    <a href="#" data-bs-toggle="modal" data-bs-target="#newsletterModal">Newsletter</a>
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#newsletterModal"> Newsletter </a>
                 </li>
                 <!------------------------ Me contacter modale via bootstrap--------------->
                 <li class="nav-item">
@@ -140,19 +140,18 @@ $isLoggedIn = isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true;
 
 
                 <!----------------- Bouton Connexion/Déconnexion ----->
-
-                <?php if ($isLoggedIn): ?> 
+                <?php $isLoggedIn = $_SESSION['logged_in'] ?>
+                <?php if ($isLoggedIn):
+                    var_dump($isLoggedIn); ?>
                     <!--sauf if Admin--> 
                     <li class="nav_item">
                         <a href="produit-select.php" class="nav-link">ajouter produit</a>
                     <!-- ici je referme le if admin -->
                     </li>
-                    <a href="logout.php" class="position"> Déconnexion</a>
+                    <a href="logout.php" class="position">Déconnexion</a>
                 <?php else: ?>
-                    <a href="login.php" class="position"> Connexion </a>
+                    <a href="login.php" class="position">Connexion</a>
                 <?php endif; ?>
-                </li>
-
             </ul>
         </div>
     </nav>
