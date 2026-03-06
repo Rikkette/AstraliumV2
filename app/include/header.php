@@ -1,9 +1,8 @@
 <?php
-
+// -------------Vérifiez si l'utilisateur est connecté---------
 if (session_status() !== PHP_SESSION_NONE) {
     session_start();
 }
-
 //var_dump($_SESSION['users_email']);
 
 $db_host = 'db';
@@ -27,25 +26,6 @@ try {
     die("Erreur de connexion : " . $e->getMessage());
 }
 
-// -------------Vérifiez si l'utilisateur est connecté---------
-
-if (isset($_SESSION['users_id'])) {
-    $userId = $_SESSION['users_id'];
-
-    // ------------Récupération des informations de l'utilisateur-------
-    $sqlUser = "SELECT * FROM users WHERE users_id=:users_id";
-    $stmtUser = $pdo->prepare($sqlUser);
-    $stmtUser->execute(['users_id' => $userId]);
-    $user = $stmtUser->fetch(PDO::FETCH_ASSOC);
-
-    if ($user) {
-        $username = $user['users_email'];
-    }
-}
-$Admin = isset($_SESSION['type_libelle']) && in_array($_SESSION['type_libelle'], ['Admin']);
-$isLoggedIn = isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true;
-
-// var_dump($_SESSION['type_libelle']); //(renvoie si je suis co comme admin ou non)
 ?>
 
 <!---------------------------------------html--------------------------------------------->
@@ -74,6 +54,36 @@ $isLoggedIn = isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true;
     </script>
 
 </head>
+
+<?php     // Recherche de l'utilisateur par email
+$stmt = $pdo->prepare("SELECT * FROM users WHERE users_email = :login");
+$stmt->bindValue(':login', $login);
+$stmt->execute();
+$user = $stmt->fetch(PDO::FETCH_ASSOC);
+
+// Vérification que l'utilisateur existe ET que le mot de passe est correct
+if ($user && $password === $user['users_password']) {
+
+    // Récupère le rôle de l'utilisateur
+    $stmt = $pdo->prepare("SELECT * FROM type_role WHERE type_role_id = :type_role_id");
+
+    $stmt->bindValue(':type_role_id', $user['type_role_id']);
+    $stmt->execute();
+    $type = $stmt->fetch(PDO::FETCH_ASSOC);
+    var_dump($type);
+
+    // Stocker les informations en session
+    $_SESSION['users_id'] = $user['users_id'];
+    $_SESSION['logged_in'] = true;
+    $_SESSION['type_libelle'] = $type['type_libelle'];
+
+    if ($user) {
+        $username = $user['users_email'];
+    }
+}
+$Admin = isset($_SESSION['type_libelle']) && in_array($_SESSION['type_libelle'], ['Admin']);
+$isLoggedIn = isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true;
+?>
 
 <!--------------------------logo panier ------------------------->
 <div class="logo_panier">
@@ -138,19 +148,23 @@ $isLoggedIn = isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true;
                 </li>
                 <!----->
 
-
                 <!----------------- Bouton Connexion/Déconnexion ----->
-                <?php $isLoggedIn = $_SESSION['logged_in'] ?>
-                <?php if ($isLoggedIn):
-                    var_dump($isLoggedIn); ?>
-                    <!--sauf if Admin--> 
-                    <li class="nav_item">
-                        <a href="produit-select.php" class="nav-link">ajouter produit</a>
-                    <!-- ici je referme le if admin -->
+                <?php var_dump($isLoggedIn);
+                var_dump($_SESSION); ?>
+                <?php if ($isLoggedIn): ?>
+
+                    <li class="nav-item">
+                        <a href="logout.php" class="nav-link">Déconnexion</a>
                     </li>
-                    <a href="logout.php" class="position">Déconnexion</a>
+                    <?php if ($Admin): ?>
+                        <li class="nav-item">
+                            <a href="admin.php" class="nav-link">Admin</a>
+                        </li>
+                    <?php endif; ?>
                 <?php else: ?>
-                    <a href="login.php" class="position">Connexion</a>
+                    <li class="nav-item">
+                        <a href="login.php" class="nav-link">Connexion</a>
+                    </li>
                 <?php endif; ?>
             </ul>
         </div>

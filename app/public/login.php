@@ -1,36 +1,24 @@
 <?php
+ob_start();
+require_once('../app/controllers/UsersController.php');
 include '../include/header.php';
+if (session_status() == PHP_SESSION_NONE) session_start();
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
-$error_message = null;
+$error_message = '';
 
 // Traitement de la soumission du formulaire de connexion
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $controller=new UserController();
 
     $login = $_POST['users_email'];
     $password = $_POST['users_password'];
 
-    // Recherche de l'utilisateur par email
-    $stmt = $pdo->prepare("SELECT * FROM users WHERE users_email = :login");
-    $stmt->bindValue(':login', $login);
-    $stmt->execute();
-    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+    $error= $controller->login($login,$password);
 
-    // Vérification que l'utilisateur existe ET que le mot de passe est correct
-    if ($user && $password === $user['users_password']) {
-
-        // Récupère le rôle de l'utilisateur
-        $stmt = $pdo->prepare("SELECT * FROM type_role WHERE type_role_id = :type_role_id");
-
-        $stmt->bindValue(':type_role_id', $user['type_role_id']);
-        $stmt->execute();
-        $type = $stmt->fetch(PDO::FETCH_ASSOC);
-
-        // Stocker les informations en session
-        $_SESSION['users_id'] = $user['users_id'];
-        $_SESSION['logged_in'] = true;
-        $_SESSION['type_libelle'] = $type['type_libelle'];
+        var_dump($type);
+        die();
 
         echo "<script>window.location.href='index.php';</script>";
         exit();
@@ -39,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Email ou mot de passe incorrect
         $error_message = "Email ou mot de passe incorrect";
     }
-}
+
 ?>
 
 <!--------------------------------------------------------------->
@@ -72,4 +60,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
 </div>
 
-<?php include "../include/footer.php"; ?>
+<?php ob_end_flush();
+include "../include/footer.php"; ?>
