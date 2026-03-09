@@ -1,33 +1,32 @@
 <?php
 ob_start();
-require_once('../app/controllers/UsersController.php');
+session_start();
+
+require_once '/var/www/require/config.php';
+require_once ROOT_PATH . 'app/controllers/UsersController.php';
 include '../include/header.php';
-if (session_status() == PHP_SESSION_NONE) session_start();
+
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
 
 $error_message = '';
 
-// Traitement de la soumission du formulaire de connexion
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $controller=new UserController();
 
-    $login = $_POST['users_email'];
+    $controller = new UserController();
+
+    $login = htmlspecialchars($_POST['users_email']);
     $password = $_POST['users_password'];
 
-    $error= $controller->login($login,$password);
+    $result = $controller->login($login, $password);
 
-        var_dump($type);
-        die();
-
-        echo "<script>window.location.href='index.php';</script>";
-        exit();
-
+    if ($result === true) {
+        header("Location: index.php");
+        exit;
     } else {
-        // Email ou mot de passe incorrect
         $error_message = "Email ou mot de passe incorrect";
     }
-
+}
 ?>
 
 <!--------------------------------------------------------------->

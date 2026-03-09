@@ -9,7 +9,7 @@ private $dao;
 
   public function __construct()
   {
-    $this->dao = new dao(DB_HOST_DEV,'AstraliumV2'); //protege les donner sensible en les mettant dans une classe et en les appelant que quand on en a besoin
+    $this->dao = new dao('AstraliumV2', 'dev'); //protege les donner sensible en les mettant dans une classe et en les appelant que quand on en a besoin
     
   }
 

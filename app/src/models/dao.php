@@ -1,31 +1,21 @@
 <?php
+// Inclure config.php en utilisant un chemin relatif
+require_once '/var/www/require/config.php';
 
-include 'config.php';
-
-class dao
-{
-    // Chargement de la configuration
-
+class dao {
     private $db_host;
     private $db_name;
     private $db_user;
     private $db_password;
-    private $user_type;
 
-    public function __construct($_dbhost, $_dbname)
-    {
-        // Récupération de l'environnement (à définir selon vos besoins)
-        $env = 'dev'; // ou 'prod' à changer lors de la conteneurisation
-        $db_host = constant('DB_HOST_' . strtoupper($env));
-        // $this->db_host = $_dbhost; //ancienne version
-        $this->db_host = $db_host;
+    public function __construct($_dbname, $env = 'dev') {
+        $this->db_host = constant('DB_HOST_' . strtoupper($env));
         $this->db_name = $_dbname;
-        $this->db_user = 'root';
-        $this->db_password = 'opif';
+        $this->db_user = $env === 'dev' ? DB_USER_DEV : DB_USER_PROD;
+        $this->db_password = $env === 'dev' ? DB_PASSWORD_DEV : DB_PASSWORD_PROD;
     }
 
-    public function connect()
-    {
+    public function connect() {
         $dsn = "mysql:host={$this->db_host};dbname={$this->db_name};charset=utf8mb4";
         $options = [
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
@@ -34,7 +24,6 @@ class dao
         ];
         return new PDO($dsn, $this->db_user, $this->db_password, $options);
     }
-
 
 
     // Méthode pour effectuer une requête SELECT sur une table donnée

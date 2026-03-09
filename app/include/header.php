@@ -1,9 +1,6 @@
 <?php
 // -------------Vérifiez si l'utilisateur est connecté---------
-if (session_status() !== PHP_SESSION_NONE) {
-    session_start();
-}
-//var_dump($_SESSION['users_email']);
+
 
 $db_host = 'db';
 $db_name = 'AstraliumV2';
@@ -56,33 +53,15 @@ try {
 </head>
 
 <?php     // Recherche de l'utilisateur par email
-$stmt = $pdo->prepare("SELECT * FROM users WHERE users_email = :login");
-$stmt->bindValue(':login', $login);
-$stmt->execute();
-$user = $stmt->fetch(PDO::FETCH_ASSOC);
-
-// Vérification que l'utilisateur existe ET que le mot de passe est correct
-if ($user && $password === $user['users_password']) {
-
-    // Récupère le rôle de l'utilisateur
-    $stmt = $pdo->prepare("SELECT * FROM type_role WHERE type_role_id = :type_role_id");
-
-    $stmt->bindValue(':type_role_id', $user['type_role_id']);
-    $stmt->execute();
-    $type = $stmt->fetch(PDO::FETCH_ASSOC);
-    var_dump($type);
-
-    // Stocker les informations en session
-    $_SESSION['users_id'] = $user['users_id'];
-    $_SESSION['logged_in'] = true;
-    $_SESSION['type_libelle'] = $type['type_libelle'];
-
-    if ($user) {
-        $username = $user['users_email'];
-    }
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
 }
-$Admin = isset($_SESSION['type_libelle']) && in_array($_SESSION['type_libelle'], ['Admin']);
-$isLoggedIn = isset($_SESSION['logged_in']) && $_SESSION['logged_in'] == true;
+
+$isLoggedIn = isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true; // variable defini pour la nav si connecter afficher la deconexion 
+
+$Admin = isset($_SESSION['type_libelle']) && $_SESSION['type_libelle'] === 'Admin'; // pareil pour la nav afficher des bouton specifique a l'admin 
+
+$username = $_SESSION['users_email'] ?? null;
 ?>
 
 <!--------------------------logo panier ------------------------->

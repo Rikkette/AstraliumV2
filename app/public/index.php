@@ -1,7 +1,10 @@
+<?php 
+session_start();
+include "../include/header.php";
+?>
 <!----------- Page d'acceuil du site présentation des dernieres nouveautés mise dans le shop, -------->
 
-<?php include "../include/header.php";
-?>
+
 
     <!-----------Partie PHP Select * from pour afficher les dernier produits mis sur le site -------->
     <?php

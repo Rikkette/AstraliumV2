@@ -1,8 +1,8 @@
 <?php
 session_start();
-$isLoggedIn=true;
-$_SESSION = []; // Réinitialise toutes les variables de session
 session_destroy();
-header("Location: index.php"); // Redirection vers la page de connexion
+
+header("Location: index.php");
 exit;
-?>
+
+// logout simple on detruit la session, faut pas voir plus loin, on deconnecte et on renvoie vers l'index 

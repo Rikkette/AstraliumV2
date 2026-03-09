@@ -1,7 +1,7 @@
 <?php
 
-require_once '../model/UserClass.php';
-require_once '../model/TypeRoleClass.php';
+require_once __DIR__ . '/../models/UserClass.php';
+require_once __DIR__ . '/../models/TypeRoleClass.php';
 
 class UserController
 {
@@ -16,37 +16,31 @@ class UserController
 
     public function login($email, $password)
     {
-        $user = $this->userModel->getUserByEmail($email);
-        if (!$user) return "Identifiants incorrects";
 
-        $user = $user[0];
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        $user = $this->userModel->getUserByEmail($email);
+
+        if (!$user) {
+            return "Identifiants incorrects";
+        }
 
         if (!password_verify($password, $user['users_password'])) {
             return "Identifiants incorrects";
         }
 
-        // Récupérer le rôle
+        // récupérer le rôle
         $role = $this->typeModel->getLibelleById($user['type_role_id']);
 
         session_regenerate_id(true);
+
         $_SESSION['users_id'] = $user['users_id'];
+        $_SESSION['users_email'] = $user['users_email'];
         $_SESSION['type_libelle'] = $role;
         $_SESSION['logged_in'] = true;
 
-        // Redirection selon le rôle vers le dashboard 
-        // if ($role === 'admin') {
-        //     header('Location: ../admin/dashboard.php');
-        //     exit;
-        // } else {
-        //     header('Location: index.php');
-        //     exit;
-        //}
-
-        if ($role === 'admin' || $role === 'client' || $role === 'dev') {
-            header('Location: ../../public/index.php');
-            exit;
-        } else {
-            return "Rôle inconnu, accès refusé";
-        }
+        return true;
     }
 }

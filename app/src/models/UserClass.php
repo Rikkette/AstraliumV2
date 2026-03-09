@@ -2,16 +2,19 @@
 
 require_once 'dao.php';
 
-class UserClass 
+
+class UserClass
 {
     private $dao;
 
-    public function __construct() {
-        $this->dao = new dao(DB_HOST_DEV, 'AstraliumV2'); 
+    public function __construct()
+    {
+        $this->dao = new dao('AstraliumV2', 'dev');
     }
 
-    public function getUserByEmail($email) { 
-        $result = $this->dao->select( 
+    public function getUserByEmail($email)
+    {
+        $result = $this->dao->select(
             'users',
             'users_email = ?',
             [$email]
@@ -19,7 +22,8 @@ class UserClass
         return $result ? $result[0] : null;
     }
 
-    public function getUserById($users_id) {
+    public function getUserById($users_id)
+    {
         $result = $this->dao->select(
             'users',
             'users_id = ?',
@@ -28,7 +32,8 @@ class UserClass
         return $result ? $result[0] : null;
     }
 
-    public function getUserWithRole($email) {
+    public function getUserWithRole($email)
+    {
         $sql = "SELECT u.*, t.type_libelle AS role
                 FROM users u
                 JOIN type_role t ON u.type_role_id = t.type_role_id
@@ -38,4 +43,3 @@ class UserClass
         return $stmt->fetch();
     }
 }
-?>

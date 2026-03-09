@@ -9,14 +9,14 @@ services:
       context: ./app # On précise le dossier où se trouve le Dockerfile
       dockerfile: Dockerfile  # On précise le fichier Dockerfile à utiliser
     ports:
-      - "8081:80" # On expose le port 80 du container sur le port 8081 de la machine
+      - "8082:80" # On expose le port 80 du container sur le port 8082 de la machine
     volumes: # On monte les volumes pour que les fichiers soient accessibles dans le container
       - ./app/public:/var/www/html
       - ./app/images:/var/www/images
       - ./app/include:/var/www/include
       - ./app/config:/var/www/config
       - ./app/require:/var/www/require
-      - ./app/app:/var/www/app
+      - ./app/src:/var/www/app
         # Ajout de la config Apache
     depends_on: # On précise que le container app dépend du container db
       - db
