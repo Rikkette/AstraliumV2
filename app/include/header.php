@@ -22,7 +22,7 @@ try {
 } catch (PDOException $e) {
     die("Erreur de connexion : " . $e->getMessage());
 }
-
+// créé variable environemment pour plus de sécu
 ?>
 
 <!---------------------------------------html--------------------------------------------->
