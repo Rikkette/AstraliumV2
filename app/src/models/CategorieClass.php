@@ -6,7 +6,7 @@ class CategorieClass
 {
     private $dao;
     private $cat_slug; // (categorie slug) représentation textuelle simplifiée d'une ressource dans l'url pour créer des liens propres.
-    private $cat_nom; // (categorie nom)
+    private $categorie_nom; // (categorie nom)
 
     // id de la bdd
     private $blog_id;
@@ -69,9 +69,9 @@ class CategorieClass
         return $this->cat_slug;
     }
         //Categorie Nom
-        public function get_cat_nom()
+        public function get_categorie_nom()
     {
-        return $this->cat_nom;
+        return $this->categorie_nom;
     }
         //Coupon ID
         public function get_coupon_id()
@@ -118,9 +118,9 @@ class CategorieClass
     }
 
         //Categorie Nom
-        public function set_cat_nom($cat_nom)
+        public function set_($categorie_nom)
     {
-        $this->cat_nom = $cat_nom;
+        $this->categorie_nom = $categorie_nom;
     }
 
         //Coupon ID
@@ -153,9 +153,9 @@ class CategorieClass
          $params = array();
         if (!empty($search)) {
             $params = array(':cat_slug' => $search);
-            $categories = $this->dao->select("categorie", "cat_slug = :cat_slug", $params, "cat_nom");
+            $categories = $this->dao->select("categorie", "cat_slug = :cat_slug", $params, "categorie_nom");
         } else {
-            $categories = $this->dao->select("categorie", "", $params, "cat_nom");
+            $categories = $this->dao->select("categorie", "", $params, "categorie_nom");
         }
 
 
@@ -173,10 +173,74 @@ class CategorieClass
         return $result[0]['total'] ?? 0;
     }
 
+    // Récupérer une catégorie par son ID
+    public function getCategorieById($categorie_id)
+    {
+        $params = array('categorie_id' => $categorie_id);
+        $results = $this->dao->select(
+            "categorie",
+            "categorie_id = :categorie_id",
+            $params
+        )[0] ?? null;
 
+        if ($results) {
+            return new Categorie($results);
+        }
+        return null;
+    }
 
+ // Récupérer une catégorie par son slug
+    public function getCategorieBySlug($cat_slug)
+    {
+        $params = array('cat_slug' => $cat_slug);
+        $results = $this->dao->select(
+            "categorie",
+            "cat_slug = :cat_slug",
+            $params
+        )[0] ?? null;
 
+        if ($results) {
+            return new Categorie($results);
+        }
+        return null;
+    }
 
+    // Insérer une nouvelle catégorie
+    public function insertCategorie()
+    {
+        $values = array(
+            'categorie_nom' => $this->categorie_nom,
+            'cat_slug' => $this->cat_slug,
+            'promo_id' => $this->promotions_id,
+            'coupon_id' =>$this->coupon_id,
+        );
+        
+        return $this->dao->insert("categorie", $values);
+    }
+
+    // Mettre à jour une catégorie
+    public function updateCategorie()
+    {
+        $data = array(
+            'categorie_nom' => $this->categorie_nom,
+            'cat_slug' => $this->cat_slug,
+            'promo_id' => $this->promotions_id,
+            'coupon_id' =>$this->coupon_id,
+        );
+        
+        $where = 'categorie_id = ?';
+        $params = [$this->categorie_id];
+
+        return $this->dao->update("categorie", $data, $where, $params);
+    }
+
+    // Supprimer une catégorie
+    public function deleteCategorie()
+    {
+        $where = 'categorie_id = ?';
+        $params = [$this->categorie_id];
+        return $this->dao->delete("categorie", $where, $params);
+    }
 }
 
 ?>
