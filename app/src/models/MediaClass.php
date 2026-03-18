@@ -87,4 +87,111 @@ class Media
         return $this->produits_id;
     }
 
+    //Setters -------------------------------------------
+
+    //Media ID
+    public function set_media_id($media_id)
+    {
+        $this->media_id = $media_id;
+    }
+
+    // Media Nom
+    public function set_media_nom($media_nom)
+    {
+        $this->media_nom = $media_nom;
+    }
+
+    //Media Tag 
+    public function set_media_tag($media_tag)
+    {
+        $this->media_tag = $media_tag;
+    }
+
+    //Media Chemin 
+    public function set_media_chemin($media_chemin)
+    {
+        $this->media_chemin = $media_chemin;
+    }
+
+    //Media Descriptions
+    public function set_media_descriptions($media_descriptions)
+    {
+        $this->media_descriptions = $media_descriptions;
+    }
+
+    //Blog ID
+    public function set_blog_id($blog_id)
+    {
+        $this->blog_id = $blog_id;
+    }
+
+    //Commentaires ID
+    public function set_commentaires_id($commentaires_id)
+    {
+        $this->commentaires_id = $commentaires_id;
+    }
+
+    //Produits ID (pas sur)
+    public function set_produits_id($produits_id)
+    {
+        $this->produits_id = $produits_id;
+    }
+
+    //Fonction---------------------------------------------------------
+
+    public function getMediaByID($media_id)
+    {
+        $params = array('media_id' => $media_id);
+        $results = $this->dao->select("media", "media_id = :media_id", $params)[0] ?? null;
+
+        if ($results) {
+            return new Media($results);
+        }
+        return null;
+    }
+
+    //INSERT ------------------------------------------
+    public function insertMedia()
+    {
+        $values = array(
+            'media_nom' => $this->media_nom,
+            'media_tag' => $this->media_tag,
+            'media_chemin' => $this->media_chemin,
+            'media_descriptions' => $this->media_descriptions,
+            'blog_id' => $this->blog_id,
+            'media_id' => $this->media_id,
+            'commentaires_id' => $this->commentaires_id,
+            'produits_id' => $this->produits_id,
+
+        );
+        return $this->dao->insert("media", $values);
+    }
+    
+    //UPDATE---------------------------------------------
+    public function updateMedia()
+    {
+        $values = array(
+            'media_nom' => $this->media_nom,
+            'media_tag' => $this->media_tag,
+            'media_chemin' => $this->media_chemin,
+            'media_descriptions' => $this->media_descriptions,
+            'blog_id' => $this->blog_id,
+            'media_id' => $this->media_id,
+            'commentaires_id' => $this->commentaires_id,
+            'produits_id' => $this->produits_id,
+
+        );
+
+        $where = 'media_id = ?';
+        $params = [$this->media_id];
+        return $this->dao->update("media", $data, $where, $params);
+    }
+
+    // DELETE------------------------------------------------------------
+    public function deleteMedia()
+    {
+        $where = 'media_id = ?';
+        $params = [$this->media_id];
+        return $this->dao->delete("media", $where, $params);
+    }
 }
