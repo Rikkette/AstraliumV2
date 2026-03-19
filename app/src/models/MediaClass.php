@@ -137,7 +137,7 @@ class Media
         $this->produits_id = $produits_id;
     }
 
-    //Fonction---------------------------------------------------------
+    //Fonction: recupère un media par son id---------------------------------------------------------
 
     public function getMediaByID($media_id)
     {
@@ -166,8 +166,7 @@ class Media
         );
         return $this->dao->insert("media", $values);
     }
-    
-    //UPDATE---------------------------------------------
+    //UPDATE MAJ MEDIA ---------------------------------------------
     public function updateMedia()
     {
         $values = array(

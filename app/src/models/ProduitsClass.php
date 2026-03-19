@@ -44,7 +44,7 @@ class Produit
     }
 
 
-    // Getters --------------------------------------
+    // Getters -------------------------------------------------------
 
     //Produits ID
     public function get_produits_id()
@@ -118,8 +118,7 @@ class Produit
         return $this->coupon_id;
     }
 
-
-    // Setters ------------------------------------
+    // Setters -------------------------------------------------------
 
     //produit ID
     public function set_produits_id($produits_id)
@@ -139,7 +138,7 @@ class Produit
         $this->produits_description = $produits_description;
     }
 
-     //Produit Description
+    //Produit Description
     public function set_produits_libelle($produits_libelle)
     {
         $this->produits_libelle = $produits_libelle;
@@ -237,7 +236,7 @@ class Produit
         return $produits;
     }
 
-    // recherche de produit 
+    // recherche de produit------------------------------------------------------
     public function getProduitsForSearch($search)
     {
         $params = array(':search' => "%$search%");
@@ -257,8 +256,7 @@ class Produit
 
         return $promotions;
     }
-
-
+    //Insert Produits---------------------------------------------------------
     public function insertProduit()
     {
         $values = array(
@@ -274,12 +272,11 @@ class Produit
         );
         return $this->dao->insert("produits", $values);
     }
-
-
+    //Update Produits-----------------------------------------------------------
     public function updateProduit()
     {
         $data = array(
-          'produits_nom' => $this->produits_nom,
+            'produits_nom' => $this->produits_nom,
             'produits_libelle' => $this->produits_libelle,
             'produits_slug' => $this->produits_slug,
             'produits_description' => $this->produits_description,
@@ -295,7 +292,7 @@ class Produit
         return $this->dao->update("produits", $data, $where, $params);
     }
 
-
+    //Delete Produits-------------------------------------------------
     public function deleteProduit()
     {
         $where = 'produits_id = ?';
