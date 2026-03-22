@@ -3,7 +3,6 @@ include '../../../include/header.php';
 require_once '../models/CategorieClass.php';
 ?>
 
-
 <div class="container mt-5">
     <div class="row">
         <div class="col-md-12">

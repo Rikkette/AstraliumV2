@@ -24,4 +24,10 @@ if (!defined('BASE_URL')) {
     } else {
         define('BASE_URL', 'http://localhost/ASTRALIUMV2'); // url pour dev 
     }
-}
+
+    }
+    
+//jtw
+    define ('jwt_secret', $_ENV['jwt_secret']);
+    define ('jwt_expiration', (int)$_ENV['jwt_expiration']);
+
