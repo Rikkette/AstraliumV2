@@ -11,7 +11,8 @@ class UserClass
     {
         $this->dao = new dao('AstraliumV2', 'dev');
     }
-
+    
+//connection avec l'email
     public function getUserByEmail($email)
     {
         $result = $this->dao->select(
@@ -22,6 +23,7 @@ class UserClass
         return $result ? $result[0] : null;
     }
 
+//connection avec l'user ID
     public function getUserById($users_id)
     {
         $result = $this->dao->select(
@@ -32,6 +34,7 @@ class UserClass
         return $result ? $result[0] : null;
     }
 
+//Qui ce connecte ? un clien ou l'admin ? donc type role
     public function getUserWithRole($email)
     {
         $sql = "SELECT u.*, t.type_libelle AS role

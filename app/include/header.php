@@ -1,19 +1,10 @@
 <?php
 // -------------Vérifiez si l'utilisateur est connecté---------
 
-
 $db_host = 'db';
 $db_name = 'AstraliumV2';
 $db_user = 'root';
 $db_password = 'opif';
-
-//$conn = new mysqli($servername ,$username ,$password ,$dbname);
-
-//if($conn->connect_error)(
-//    die("erreur de connexion à la base de donnée : ". $conn->connect_error)
-//)else {
-//   echo "connexion ok !"
-//}
 
 // ----------------------Connexion à la base de données------------------------------
 try {
@@ -128,8 +119,8 @@ $username = $_SESSION['users_email'] ?? null;
                 <!----->
 
                 <!----------------- Bouton Connexion/Déconnexion ----->
-                <?php var_dump($isLoggedIn);
-                var_dump($_SESSION); ?>
+                <?php ($isLoggedIn);
+                ($_SESSION); ?>
                 <?php if ($isLoggedIn): ?>
 
                     <li class="nav-item">

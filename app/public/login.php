@@ -2,6 +2,7 @@
 ob_start();
 session_start();
 
+//relie la page a config & user controller au header
 require_once '/var/www/require/config.php';
 require_once ROOT_PATH . 'app/controllers/UsersController.php';
 include '../include/header.php';

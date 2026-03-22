@@ -183,7 +183,7 @@ class Media
 
         $where = 'media_id = ?';
         $params = [$this->media_id];
-        return $this->dao->update("media", $data, $where, $params);
+        return $this->dao->update("media", $where, $params);
     }
 
     // DELETE------------------------------------------------------------

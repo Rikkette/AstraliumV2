@@ -120,7 +120,7 @@ class CategorieClass
     }
 
     //Categorie Nom
-    public function set_($categorie_nom)
+    public function set_categorie_nom($categorie_nom)
     {
         $this->categorie_nom = $categorie_nom;
     }
@@ -164,7 +164,7 @@ class CategorieClass
         // Convertir chaque entrée en objet Categorie----------------------------
         $categorieObjects = [];
         foreach ($categories as $categorieData) {
-            $categorieObjects[] = new Categorie($categorieData);
+            $categorieObjects[] = new CategorieClass($categorieData);
         }
 
         return $categorieObjects;
@@ -187,7 +187,7 @@ class CategorieClass
         )[0] ?? null;
 
         if ($results) {
-            return new Categorie($results);
+            return new CategorieClass($results);
         }
         return null;
     }
@@ -203,7 +203,7 @@ class CategorieClass
         )[0] ?? null;
 
         if ($results) {
-            return new Categorie($results);
+            return new CategorieClass($results);
         }
         return null;
     }
