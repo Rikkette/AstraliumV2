@@ -45,7 +45,7 @@ try {
 
 <?php     // Recherche de l'utilisateur par email
 if (session_status() === PHP_SESSION_NONE) {
-    session_start();
+    //session_start();
 }
 
 $isLoggedIn = isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true; // variable defini pour la nav si connecter afficher la deconexion 
@@ -73,7 +73,7 @@ $username = $_SESSION['users_email'] ?? null;
 
 <!--------- banniere d'agrement pour illustré la page d'acceuil ---------->
 
-<div class="banniere-container">
+<div class="banniere_index">
     <div>
         <img src="image/banniere_index.png" class="banniere_index" alt="banniere_index">
     </div>
@@ -120,7 +120,7 @@ $username = $_SESSION['users_email'] ?? null;
 
                 <!----------------- Bouton Connexion/Déconnexion ----->
                 <?php ($isLoggedIn);
-                ($_SESSION); ?>
+                //($_SESSION); ?>
                 <?php if ($isLoggedIn): ?>
 
                     <li class="nav-item">

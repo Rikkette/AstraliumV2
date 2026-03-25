@@ -43,7 +43,6 @@ class Produit
         return $this;
     }
 
-
     // Getters -------------------------------------------------------
 
     //Produits ID
@@ -256,7 +255,7 @@ class Produit
 
         return $promotions;
     }
-    //Insert Produits---------------------------------------------------------
+    //Insert Produits (create) ---------------------------------------------------------
     public function insertProduit()
     {
         $values = array(

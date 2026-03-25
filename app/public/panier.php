@@ -25,7 +25,7 @@ switch ($action) {
                 break;
             }
         }
-        // si le produit n'est pas dans le pa,nier la Quantité est de 1 
+        // si le produit n'est pas dans le panier la Quantité est de 1 
         if (!$found) {
             $_SESSION['Panier'][] = [
                 'slug' => $slug,
@@ -89,4 +89,3 @@ switch ($action) {
 }
 
 include "../include/footer.php";
-?>

@@ -149,7 +149,7 @@ class CategorieClass
     }
 
 
-    // Récupérer toutes les catégories-------------------------------------------
+    // Récupérer toutes les catégories (READ)-------------------------------------------
     public function getAllCategories($search = '')
     {
         $params = array();
@@ -208,7 +208,7 @@ class CategorieClass
         return null;
     }
 
-    // Insérer une nouvelle catégorie----------------------------------
+    // Insérer une nouvelle catégorie (create)----------------------------------
     public function insertCategorie()
     {
         $values = array(
@@ -221,7 +221,7 @@ class CategorieClass
         return $this->dao->insert("categorie", $values);
     }
 
-    // Mettre à jour une catégorie------------------------------------------
+    // Mettre à jour une catégorie (update)------------------------------------------
     public function updateCategorie()
     {
         $data = array(
@@ -237,7 +237,7 @@ class CategorieClass
         return $this->dao->update("categorie", $data, $where, $params);
     }
 
-    // Supprimer une catégorie-------------------------------------------------
+    // Supprimer une catégorie (delete)-------------------------------------------------
     public function deleteCategorie()
     {
         $where = 'categorie_id = ?';

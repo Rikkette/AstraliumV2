@@ -12,6 +12,7 @@
 </head>
 
 <body>
+    <h1 style="text-align: center;">Découvre mon Univers</h1>
 
     <script src="/public/js/glightbox.min.js"></script>
     <script>
@@ -22,8 +23,8 @@
         <img src="image/Calendrier_01_Janvier.png" alt="calendrier_janvier" width="350" height="500">
     </a>
 
-    <a href="image/Calendrier_02_Février.png" class="glightbox">
-        <img src="image/Calendrier_02_Février.png" alt="calendrier_février" width="350" height="500">
+    <a href="image/Calendrier_02_Fevrier.png" class="glightbox">
+        <img src="image/Calendrier_02_Fevrier.png" alt="calendrier_fevrier" width="350" height="500">
     </a>
 
     <a href="image/Calendrier_03_Mars.png" class="glightbox">

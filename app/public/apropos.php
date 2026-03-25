@@ -13,7 +13,7 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 
-<h1 class="titre_a_propos">
+<h1 class="titre_a_propos" style="text-align: center;">
     Qui suis-je ?
 </h1>
 

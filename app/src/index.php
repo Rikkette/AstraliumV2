@@ -1,4 +1,5 @@
 <?php 
+//page qui permet de gerer les categories
 ob_start();
 
 include "../include/header.php";

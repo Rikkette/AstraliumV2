@@ -2,9 +2,9 @@
 <footer>
 
     <div class="mentions-container">
-        <a href="mentions_legales.php" class="mention_legale">Mentions légales</a>
+        <a href="MentionsLegales.php" class="MentionsLegales">Mentions légales</a>
 
-        <a href="conditions_generales_de_vente.php" class="condition_generale_vente">Conditions Générales de Vente</a>
+        <a href="ConditionsGeneralesDeVente.php" class="ConditionGeneralesDeVente">Conditions Générales de Vente</a>
 
     </div>
 

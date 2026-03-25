@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 ?>
 
-<!--------------------------------------------------------------->
+<!---------------------- formulaire de connexion ----------------------------------------->
 
 <div class="container-connexion">
     <div class="login-box">
@@ -45,15 +45,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <form method="POST" class="form-connexion">
 
             <div class="textbox">
-                <input type="text" name="users_email" placeholder="Email" id="email" class="input-connexion" autocomplete="on" required>
+                <input type="email" name="users_email" placeholder="Email" id="email" class="input-connexion" autocomplete="on" required>
                 <span id="email-error" class="error-message"></span>
             </div>
 
             <div class="textbox">
-                <input type="password" name="users_password" placeholder="Mot de passe" id="users_password" class="input-connexion" required>
+                <input type="password" autocomplete="current-password" name="users_password" placeholder="Mot de passe" id="users_password" class="input-connexion" required>
                 <span id="password-error" class="error-message"></span>
             </div>
-
+               <!----Mettre du JS pour que les span id fonctionnent sinon inutile --->
             <input type="submit" class="btn-connexion" value="Se connecter">
 
         </form>

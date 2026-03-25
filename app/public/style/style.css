@@ -1,14 +1,14 @@
 /*Appel d'un font spécifique lier à la charte graphique d'Astralium*/
 
 @font-face {
-  font-family: 'SirenikRegular';
+  font-family: 'Sirenik';
   src: url('font/sirenik-regular.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'SirenikItalic';
+  font-family: 'Sirenik';
   src: url('font/sirenik-italic.otf') format('opentype');
   font-weight: normal;
   font-style: italic;
@@ -21,7 +21,7 @@
 
 body {
   font-size: 16px;
-  line-height: 24px; 
+  line-height: 24px;
 }
 
 .container {
@@ -34,11 +34,12 @@ img,
 table {
   max-width: 100%;
   height: auto;
-  display: block; /* j'utilise block pour évité les espaces blancs sous les images */
+  display: block;
+  /* j'utilise block pour évité les espaces blancs sous les images */
 }
 
 h1 {
-  font-size: 24px; 
+  font-size: 24px;
 }
 
 .menu {
@@ -49,8 +50,8 @@ h1 {
 .button {
   padding: 12px 20px;
   width: 100%;
-  margin-bottom: 8px; 
-  display: inline-block; 
+  margin-bottom: 8px;
+  display: inline-block;
 }
 
 
@@ -65,19 +66,19 @@ h1 {
     display: flex;
     size: 6%;
   }
-  
+
   h1 {
     font-size: 28px;
   }
-  
+
   .menu {
     flex-direction: row;
     justify-content: space-between;
   }
-  
+
   .button {
     width: auto;
-    margin-right: 8px; 
+    margin-right: 8px;
   }
 }
 
@@ -86,27 +87,27 @@ h1 {
 
   .container {
     width: 85%;
-    max-width: 1200px; 
+    max-width: 1200px;
   }
-  
+
   h1 {
-    font-size: 32px; 
+    font-size: 32px;
   }
 
 }
 
 /* -------------------------------Large screen-----------------*/
-@media screen and (min-width: 992px) { 
-  
+@media screen and (min-width: 992px) {
+
   h1 {
-    font-size: 36px; 
+    font-size: 36px;
   }
 }
 
 /* Variable pour avoir une cohérence */
 
 :root {
-  --font-size-base: 16px; 
+  --font-size-base: 16px;
   --spacing-unit: 16px;
   --container-width-small: 95%;
   --container-width-medium: 90%;
@@ -114,15 +115,16 @@ h1 {
 }
 
 /*------------------------------ header -----------------------------*/
-.banniereHeader {
+.banniere_index {
   position: relative;
-  width: 100%;
+  width: 1680px;
+  height: 420px;
 }
 
 /*------------------------------ header panier ------------------------------*/
 .logo_panier {
   position: absolute;
-  top: 90px; 
+  top: 90px;
   right: 90px;
   display: flex;
   gap: 10px;
@@ -141,24 +143,23 @@ h1 {
 /*------------------------------ navbar header ou barre de navigation--------------------------------*/
 /*création d'une class supplémentaire pour ajouter un effet ce style sur la Navbar*/
 
-.custom-nav { 
-  display: center;
+.custom-nav {
+  display: block; /* ou flex si besoin */
   background-color: #dbecff;
   width: 100%;
-  height: 3.125rem; 
-  padding: 0 0.625rem; 
-  border-radius: 3.125rem; 
-  box-shadow: 0 0.625rem 0.625rem rgb(170, 177, 236); 
-  margin-top: 0;
-  margin-bottom: 1.875rem;
-  overflow: hidden;
+  max-width: 1680px;
+  height: 420px;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 10px 10px rgb(170, 177, 236);
+  margin: 0 auto 30px auto;
   overflow-x: auto;
   position: relative;
 }
 
 .nav-item {
   position: relative;
-  height: 3.125rem; 
+  height: 3.125rem;
   color: #ffffff;
   margin-top: 0;
   justify-content: space-between;
@@ -171,7 +172,8 @@ h1 {
   justify-content: center;
 }
 
-.mb-4 { /* titre index */
+.mb-4 {
+  /* titre index */
   font-family: 'SirenikRegular', Arial, sans-serif;
   font-size: 4rem;
 }
@@ -185,9 +187,9 @@ h1 {
 
 #card_boutique {
   display: flex;
-  height: 5rem; 
-  width: 2.5rem; 
-  flex: 1 0 8.75rem; 
+  height: 5rem;
+  width: 2.5rem;
+  flex: 1 0 8.75rem;
 }
 
 .titre_boutique {
@@ -226,7 +228,8 @@ h1 {
 
 .Calendrier_2025 {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /*permet d'avoir des colonne de 4 image*/
+  grid-template-columns: repeat(4, 1fr);
+  /*permet d'avoir des colonne de 4 image*/
   gap: 20px;
 }
 
@@ -241,7 +244,7 @@ h1 {
 .presentation {
   display: flex;
   align-items: center;
-  gap: 1.25rem; 
+  gap: 1.25rem;
 }
 
 .paragraphe {
@@ -271,15 +274,15 @@ h1 {
 .titre_reseaux {
   display: flex;
   position: absolute;
-  right: 23.125rem; 
+  right: 23.125rem;
   margin-top: 1.875rem;
 }
 
 .reseaux-container {
   display: flex;
-  right: 1.875rem; 
+  right: 1.875rem;
   position: absolute;
-  margin-top: 4.375rem; 
+  margin-top: 4.375rem;
   margin-right: 3.125rem;
   width: 25%;
 }
@@ -287,15 +290,15 @@ h1 {
 .icone {
   display: flex;
   justify-content: space-between;
-  gap: 1.25rem; 
-  margin-top: 0.625rem; 
+  gap: 1.25rem;
+  margin-top: 0.625rem;
 }
 
 .mentions-container {
   display: flex;
   flex-direction: column;
   position: absolute;
-  margin-left: 32.5rem; 
+  margin-left: 32.5rem;
   margin-top: 1.875rem;
   cursor: pointer;
 }
@@ -304,8 +307,8 @@ h1 {
   display: flex;
   right: 31.25rem;
   position: absolute;
-  margin-top: 0.625rem; 
-  height: 18.125rem; 
+  margin-top: 0.625rem;
+  height: 18.125rem;
   padding-right: 12.5rem;
   border-right: 1px solid rgb(0, 0, 0);
 }
@@ -324,7 +327,7 @@ h1 {
   display: flex;
   position: absolute;
   justify-content: center;
-  margin-top: 1.875rem; 
+  margin-top: 1.875rem;
   left: 11.875rem;
 }
 
@@ -332,31 +335,31 @@ h1 {
   display: flex;
   position: absolute;
   justify-content: center;
-  margin-top: 9.375rem; 
-  left: 8.125rem; 
+  margin-top: 9.375rem;
+  left: 8.125rem;
 }
 
 .button {
   display: flex;
   position: absolute;
   justify-content: center;
-  margin-top: 12.5rem; 
-  left: 10.625rem; 
+  margin-top: 12.5rem;
+  left: 10.625rem;
   border: 0;
   line-height: 2.5;
   padding: 0 1.25rem;
-  font-size: 1rem; 
+  font-size: 1rem;
   text-align: center;
   color: #fff;
-  text-shadow: 0.0625rem 0.0625rem 0.0625rem #000; 
-  border-radius: 0.625rem; 
+  text-shadow: 0.0625rem 0.0625rem 0.0625rem #000;
+  border-radius: 0.625rem;
   background-color: rgb(56, 93, 148);
   background-image: linear-gradient(to top left,
       rgba(0, 0, 0, 0.2),
       rgba(0, 0, 0, 0.2) 30%,
       rgba(0, 0, 0, 0));
   box-shadow:
-    inset 0.125rem 0.125rem 0.1875rem rgba(255, 255, 255, 0.6), 
+    inset 0.125rem 0.125rem 0.1875rem rgba(255, 255, 255, 0.6),
     inset -0.125rem -0.125rem 0.1875rem rgba(0, 0, 0, 0.6);
 }
 
@@ -382,6 +385,7 @@ h1 {
   display: flex;
   justify-content: center
 }
+
 /*----------------Mention Légale -----------------*/
 .ml {
   display: flex;

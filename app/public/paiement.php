@@ -1,6 +1,6 @@
 <?php
-?>
-<!--------- paypal setup ------------ >
+include "../include/header.php";
+//--------- paypal setup ------------ 
 
 
 
@@ -9,6 +9,6 @@
 
 
 
-<?php
+
 include "../include/footer.php";
 ?>
